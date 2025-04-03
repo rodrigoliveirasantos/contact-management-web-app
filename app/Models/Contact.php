@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $name
  * @property string $contact
  * @property string $email
+ *
+ * @method static Builder withContact(string $contact)
  */
 class Contact extends Model
 {
@@ -25,4 +28,8 @@ class Contact extends Model
         'contact',
         'email'
     ];
+
+    protected function scopeWithContact(Builder $query, string $contact) {
+        return $query->where('contact', $contact);
+    }
 }

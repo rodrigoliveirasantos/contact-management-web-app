@@ -8,7 +8,7 @@ use App\Models\Contact;
 class ListContactsController extends Controller {
 
     public function __invoke() {
-        return view('index', [
+        return view('contacts.list', [
             'contacts' => $this->getContacts()
         ]);
     }

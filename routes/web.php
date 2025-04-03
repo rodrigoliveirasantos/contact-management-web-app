@@ -1,6 +1,7 @@
 <?php
 
 use App\Contacts\Http\Controllers\ListContactsController;
+use App\Contacts\Http\Controllers\ViewContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,5 @@ include __DIR__ . '/../app/Auth/routes.php';
 Route::name('contacts.list')->get('/', ListContactsController::class);
 
 Route::middleware('auth')->group(function () {
-    Route::get('contato', function () {
-        return 'fdsffds';
-    });
+    Route::name('contacts.view')->get('/{contact}', ViewContactController::class);
 });

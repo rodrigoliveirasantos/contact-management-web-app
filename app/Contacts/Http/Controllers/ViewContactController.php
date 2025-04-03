@@ -7,14 +7,20 @@ use App\Models\Contact;
 
 class ViewContactController extends Controller {
 
-    public function __invoke() {
-        return view('index', [
-            'contacts' => $this->getContacts()
+    public function __invoke(string $contact) {
+        $contact = $this->getContact($contact);
+
+        if (!$contact) {
+            return abort(404);
+        }
+
+        return view('contacts.view', [
+            'contact' => $contact
         ]);
     }
 
-    public function getContacts() {
-        return Contact::all()->setHidden([ 'id' ]);
+    public function getContact(string $contact): Contact|null {
+        return Contact::withContact($contact)->first();
     }
 
 }
