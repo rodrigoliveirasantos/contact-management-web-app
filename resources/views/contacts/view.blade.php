@@ -7,7 +7,6 @@
 @section('body')
 
 <header>
-    <x-back-link href="{{ route('contacts.list') }}" />
     <h1>Visualizar contato</h1>
 </header>
 
@@ -18,11 +17,12 @@
     />
 
     <div class="button-group">
-        <a class="button" href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
+        <a class="button" data-theme="secondary" href="{{ route('contacts.list') }}">Voltar</a>
         <form method="POST" action="{{ route('contacts.delete', [ 'contact' => $contact->contact ]) }}">
             @csrf
             <button data-theme="danger">Apagar</button>
         </form>
+        <a class="button" href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
     </div>
 
     @error('delete')
