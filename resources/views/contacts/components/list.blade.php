@@ -2,10 +2,10 @@
     'contacts'
 ])
 
-@foreach ($contacts as $contact)
-    <ul {{ $attributes->merge([ 'class' => 'contact-list' ]) }}>
+<ul {{ $attributes->merge([ 'class' => 'contact-list' ]) }}>
+    @foreach ($contacts as $contact)
         <li>
             <x-contacts::contact :contact="$contact" />
         </li>
-    </ul>
-@endforeach
+    @endforeach
+</ul>

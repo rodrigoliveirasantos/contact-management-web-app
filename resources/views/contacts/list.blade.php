@@ -7,8 +7,9 @@
 </header>
 
 <main>
-    <a href="{{ route('contacts.create') }}">Criar contato</a>
     <x-contacts::list :contacts="$contacts" />
+
+    <a class="create-contact-link" href="{{ route('contacts.create') }}">Criar contato</a>
 </main>
 
 @endsection

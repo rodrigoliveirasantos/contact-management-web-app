@@ -2,15 +2,74 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: inherit;
 }
 
 :root {
     --clr-background: #fefefe;
     --clr-foreground: #222222;
+    --clr-primary: #33CC55;
+    --clr-primary-foreground: #111111;
+    --clr-primary-hover: #44DD66;
+    --clr-primary-hover-foreground: #111111;
+    --clr-border: #AAAAAA;
 }
-
 
 body {
     background-color: var(--clr-background);
     color: var(--clr-foreground);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    > * {
+        padding-inline: 2.4rem;
+        max-width: 60rem;
+        margin-inline: auto;
+    }
+
+    > header {
+        padding-block: 1rem;
+        margin-block-end: 2.8rem;
+        border-bottom: 1px solid var(--clr-border);
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: inside;
+}
+
+li + li {
+    margin-top: 0.5rem;
+}
+
+.button, button {
+    display: block;
+    border-radius: 9999px;
+    min-width: 12ch;
+    text-align: center;
+    font-weight: 600;
+    color: var(--clr-primary-foreground);
+    background-color: var(--clr-primary);
+    padding-block: 0.75rem;
+    padding-inline: 0.5rem;
+    transition: 200ms ease;
+    transition-property: color, background-color;
+
+    &:hover {
+        color: var(--clr-primary-hover-foreground);
+        background-color: var(--clr-primary-hover);
+    }
+}
+
+.create-contact-link {
+    @extend .button;
+    position: sticky;
+    width: 100%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 12rem;
 }
