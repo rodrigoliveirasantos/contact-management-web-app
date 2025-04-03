@@ -16,12 +16,12 @@ class LoginController extends Controller {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-            'remember' => ['required', 'boolean']
+            'remember' => ['nullable']
         ]);
 
-        ['email'    => $email,
-         'password' => $password,
-         'remember' => $remember] = $credentials;
+        $email = $credentials['email'];
+        $password = $credentials['password'];
+        $remember = (bool) ($credentials['remember'] ?? false);
 
         if (Auth::attempt([
             'email' => $email,
@@ -30,7 +30,6 @@ class LoginController extends Controller {
             $request->session()->regenerate();
             return redirect()->intended(route('contacts.list'));
         }
-
         return back()->withErrors([
             'email' => 'As credenciais não pertencem a um usuário do sistema.',
         ])->onlyInput('email');
