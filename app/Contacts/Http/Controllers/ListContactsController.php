@@ -9,7 +9,7 @@ class ListContactsController extends Controller {
 
     public function __invoke() {
         return view('contacts.list', [
-            'contacts' => $this->getContacts()
+            'contacts' => $this->getContacts()->sortBy('name')
         ]);
     }
 
