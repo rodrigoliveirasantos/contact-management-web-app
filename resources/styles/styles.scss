@@ -8,11 +8,23 @@
 :root {
     --clr-background: #fefefe;
     --clr-foreground: #222222;
-    --clr-primary: #33CC55;
+
+    --clr-primary: #11BB60;
     --clr-primary-foreground: #111111;
-    --clr-primary-hover: #44DD66;
+    --clr-primary-hover: #15CE70;
     --clr-primary-hover-foreground: #111111;
+
+    --clr-secondary: #999999;
+    --clr-secondary-foreground: #111111;
+    --clr-secondary-hover: #777777;
+    --clr-secondary-hover-foreground: #111111;
+
     --clr-border: #AAAAAA;
+
+    --clr-error: #ff5050;
+    --clr-error-foreground: #222222;
+    --clr-error-hover: #fd3030;
+    --clr-error-hover-foreground: #222222;
 }
 
 body {
@@ -48,20 +60,43 @@ li + li {
 .button, button {
     display: block;
     border-radius: 9999px;
+    border: 0;
     min-width: 12ch;
     text-align: center;
     font-weight: 600;
-    color: var(--clr-primary-foreground);
-    background-color: var(--clr-primary);
-    padding-block: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--button-foreground, var(--clr-primary-hover-foreground));
+    background-color: var(--button-background, var(--clr-primary));
+    padding-block: 0.7rem;
     padding-inline: 0.5rem;
     transition: 200ms ease;
     transition-property: color, background-color;
+    cursor: pointer;
 
     &:hover {
-        color: var(--clr-primary-hover-foreground);
-        background-color: var(--clr-primary-hover);
+        color: var(--button-hover-foreground, var(--clr-primary-hover-foreground));
+        background-color: var(--button-hover-background, var(--clr-primary-hover));
     }
+
+    &[data-theme="secondary"] {
+        --button-background: var(--clr-secondary);
+        --button-hover-background: var(--clr-secondary-hover);
+        --button-foreground: var(--clr-secondary-foreground);
+        --button-hover-foreground: var(--clr-secondary-hover-foreground);
+    }
+
+    &[data-theme="danger"] {
+        --button-background: var(--clr-error);
+        --button-hover-background: var(--clr-error-hover);
+        --button-foreground: var(--clr-error-foreground);
+        --button-hover-foregound: var(--clr-error-hover-foreground);
+    }
+}
+
+.button-group {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
 }
 
 .create-contact-link {
@@ -72,4 +107,30 @@ li + li {
     left: 50%;
     transform: translateX(-50%);
     max-width: 12rem;
+}
+
+.back-link {
+    display: block;
+    color: var(--clr-primary);
+    margin-bottom: 1em;
+    transition: 200ms ease color;
+
+    &:hover {
+        color: var(--clr-primary-hover);
+    }
+
+    &::before {
+        content: "< ";
+        font-size: 0.8em;
+    }
+}
+
+.form-field {
+    &-label {
+        display: block;
+    }
+}
+
+.error {
+    color: var(--clr-error);
 }

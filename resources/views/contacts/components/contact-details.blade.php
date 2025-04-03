@@ -49,8 +49,8 @@
     @enderror
 
     @unless($readonly)
-        <div>
-            <a href="{{ $cancel }}">Cancelar</a>
+        <div class="button-group">
+            <a class="button" href="{{ $cancel }}" data-theme="secondary">Cancelar</a>
             <button>Enviar</button>
         </div>
     @endif

@@ -7,7 +7,7 @@
 @section('body')
 
 <header>
-    <a href="{{ route('contacts.list') }}">Voltar</a>
+    <x-back-link href="{{ route('contacts.list') }}" />
     <h1>Visualizar contato</h1>
 </header>
 
@@ -16,18 +16,18 @@
         :contact="$contact"
         :readonly="true"
     />
-</main>
 
-<footer>
-    <a href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
-    <form method="POST" action="{{ route('contacts.delete', [ 'contact' => $contact->contact ]) }}">
-        @csrf
-        <button>Apagar</button>
-    </form>
+    <div class="button-group">
+        <a class="button" href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
+        <form method="POST" action="{{ route('contacts.delete', [ 'contact' => $contact->contact ]) }}">
+            @csrf
+            <button data-theme="danger">Apagar</button>
+        </form>
+    </div>
 
     @error('delete')
-        <strong>{{ $message }}</strong>
+        <x-error>{{ $message }}</x-error>
     @enderror
-</footer>
+</main>
 
 @endsection

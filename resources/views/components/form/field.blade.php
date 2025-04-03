@@ -6,14 +6,12 @@
 <div class="form-field">
     <label class="form-field-wrapper">
         @if ($label)
-            <span class="form-label">{{ $label }}</span>
+            <span class="form-field-label">{{ $label }}</span>
         @endif
         {{ $slot }}
     </label>
 
     @if ($error)
-        <div>
-            <strong>{{ $error }}</strong>
-        </div>
+        <x-error>{{ $error }}</x-error>
     @endif
 </div>

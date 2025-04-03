@@ -8,9 +8,6 @@
 
 <header>
     <h1>Editar contato</h1>
-    {{-- @TODO Adicionar URL de editar --}}
-    <a href="">Editar</a>
-    <a href="">Apagar</a>
 </header>
 
 <main>
