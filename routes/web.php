@@ -13,5 +13,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+include __DIR__ . '/../app/Auth/routes.php';
 
-Route::get('/', ListContactsController::class);
+Route::get('/', ListContactsController::class)->name('contacts.list');
+
+Route::middleware('auth')->group(function () {
+    Route::get('');
+});
