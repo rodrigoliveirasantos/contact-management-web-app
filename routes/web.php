@@ -1,5 +1,6 @@
 <?php
 
+use App\Contacts\Http\Controllers\DeleteContactController;
 use App\Contacts\Http\Controllers\EditContactController;
 use App\Contacts\Http\Controllers\ListContactsController;
 use App\Contacts\Http\Controllers\ViewContactController;
@@ -23,4 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::name('contacts.view')->get('/{contact}', ViewContactController::class);
     Route::name('contacts.edit')->get('/{contact}/edit', [EditContactController::class, 'get']);
     Route::post('/{contact}/edit', [EditContactController::class, 'updateContact']);
+    /* Usar POST permite chamar o delete em um formulário, sem a necessidade de fetch */
+    Route::name('contacts.delete')->post('/{contact}', DeleteContactController::class);
 });

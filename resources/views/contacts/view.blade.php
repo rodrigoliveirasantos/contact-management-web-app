@@ -9,9 +9,6 @@
 <header>
     <a href="{{ route('contacts.list') }}">Voltar</a>
     <h1>Visualizar contato</h1>
-    {{-- @TODO Adicionar URL de editar --}}
-    <a href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
-    <a href="">Apagar</a>
 </header>
 
 <main>
@@ -20,5 +17,17 @@
         :readonly="true"
     />
 </main>
+
+<footer>
+    <a href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
+    <form method="POST" action="{{ route('contacts.delete', [ 'contact' => $contact->contact ]) }}">
+        @csrf
+        <button>Apagar</button>
+    </form>
+
+    @error('delete')
+        <strong>{{ $message }}</strong>
+    @enderror
+</footer>
 
 @endsection
