@@ -1,4 +1,7 @@
-@props([ 'label' ])
+@props([
+    'label',
+    'error' => ''
+])
 
 <div class="form-field">
     <label class="form-field-wrapper">
@@ -7,4 +10,10 @@
         @endif
         {{ $slot }}
     </label>
+
+    @if ($error)
+        <div>
+            <strong>{{ $error }}</strong>
+        </div>
+    @endif
 </div>

@@ -7,9 +7,11 @@
 @section('body')
 
 <header>
+    <a href="{{ route('contacts.list') }}">Voltar</a>
     <h1>Visualizar contato</h1>
     {{-- @TODO Adicionar URL de editar --}}
-    <a href="">Editar</a>
+    <a href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
+    <a href="">Apagar</a>
 </header>
 
 <main>

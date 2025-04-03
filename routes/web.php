@@ -1,5 +1,6 @@
 <?php
 
+use App\Contacts\Http\Controllers\EditContactController;
 use App\Contacts\Http\Controllers\ListContactsController;
 use App\Contacts\Http\Controllers\ViewContactController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,6 @@ Route::name('contacts.list')->get('/', ListContactsController::class);
 
 Route::middleware('auth')->group(function () {
     Route::name('contacts.view')->get('/{contact}', ViewContactController::class);
+    Route::name('contacts.edit')->get('/{contact}/edit', [EditContactController::class, 'get']);
+    Route::post('/{contact}/edit', [EditContactController::class, 'updateContact']);
 });
