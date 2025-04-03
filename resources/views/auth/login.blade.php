@@ -11,7 +11,7 @@
     <div>
         <label>
             Email
-            <input type="email" name="email" />
+            <input type="email" name="email" value="{{ old('email') }}"/>
         </label>
     </div>
     <div>
@@ -22,15 +22,15 @@
     </div>
     <div>
         <label>
-            <input type="checkbox" name="remember" />
+            <input type="checkbox" name="remember" value="1" />
             Lembrar de mim
         </label>
     </div>
-    @error('email')
+    @if ($errors->any())
         <div>
-            <strong>{{ $message }}</strong>
+            <strong>{{ $errors->first() }}</strong>
         </div>
-    @enderror
+    @endif
     <div>
         <button>
             Fazer login

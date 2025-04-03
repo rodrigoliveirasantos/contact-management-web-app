@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 include __DIR__ . '/../app/Auth/routes.php';
 
-Route::get('/', ListContactsController::class)->name('contacts.list');
+Route::name('contacts.list')->get('/', ListContactsController::class);
 
 Route::middleware('auth')->group(function () {
-    Route::get('');
+    Route::get('contato', function () {
+        return 'fdsffds';
+    });
 });
