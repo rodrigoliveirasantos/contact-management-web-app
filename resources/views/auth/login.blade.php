@@ -25,10 +25,6 @@
             <input type="checkbox" name="remember" value="1" />
         </x-form.field>
 
-        @if ($errors->any())
-            <x-error>{{ $errors->first() }}</x-error>
-        @endif
-
         <div class="button-group">
             <button>
                 Fazer login

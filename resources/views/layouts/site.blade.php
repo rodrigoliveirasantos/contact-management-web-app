@@ -14,6 +14,7 @@
     @vite('resources/styles/styles.scss')
 </head>
 <body>
+    <x-auth::banner />
     @yield('body')
 </body>
 </html>

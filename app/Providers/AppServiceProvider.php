@@ -22,5 +22,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::anonymousComponentPath(resource_path('views/contacts/components'), 'contacts');
         Blade::anonymousComponentNamespace('App\\Contacts\\Views\\Components', 'contacts');
+
+        Blade::anonymousComponentPath(resource_path('views/auth/components'), 'auth');
+        Blade::anonymousComponentNamespace('App\\Auth\\Views\\Components', 'auth');
     }
 }
