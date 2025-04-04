@@ -18,10 +18,7 @@
 
     <div class="button-group">
         <a class="button" data-theme="secondary" href="{{ route('contacts.list') }}">Voltar</a>
-        <form class="wrapper-form" method="POST" action="{{ route('contacts.delete', [ 'contact' => $contact->contact ]) }}">
-            @csrf
-            <button data-theme="danger">Apagar</button>
-        </form>
+        <x-contacts::actions.delete :contact="$contact" />
         <a class="button" href="{{ route('contacts.edit', [ 'contact' => $contact->contact ]) }}">Editar</a>
     </div>
 

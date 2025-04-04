@@ -159,6 +159,10 @@ form:not(.wrapper-form) {
     gap: 1rem;
 }
 
+.wrapper-form {
+    display: contents;
+}
+
 .form-field {
     &-label {
         display: block;
