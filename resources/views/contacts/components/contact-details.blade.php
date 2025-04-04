@@ -14,9 +14,12 @@
         ($contact !== null) => route('contacts.view', [ 'contact' => $contact->contact ]),
         default => route('contacts.list')
     };
+
+    $getValue = fn (string $attribute) => $readonly
+        ? $contact?->{$attribute}
+        : old($attribute, $contact?->{$attribute});
 @endphp
 
-{{-- @TODO: Adicionar action --}}
 <form @unless($readonly)method="POST" action="{{ $action }}"@endif>
     @csrf
 
@@ -24,7 +27,7 @@
         <input
             type="text"
             name="name"
-            value="{{ $contact?->name }}"
+            value="{{ $getValue('name') }}"
             minlength="5"
             maxlength="255"
             @readonly($readonly)
@@ -34,14 +37,19 @@
         <input
             type="text"
             name="contact"
-            value="{{ $contact?->contact }}"
+            value="{{ $getValue('contact') }}"
             maxlength="9"
             minlength="9"
             @readonly($readonly)
         />
     </x-form.field>
     <x-form.field label="Email" :error="$errors->first('email')">
-        <input type="email" name="email" value="{{ $contact?->email }}" @readonly($readonly)>
+        <input
+            type="email"
+            name="email"
+            value="{{ $getValue('email') }}"
+            @readonly($readonly)
+        >
     </x-form.field>
 
     @error('update')
