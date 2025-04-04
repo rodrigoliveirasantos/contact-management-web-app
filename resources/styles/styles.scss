@@ -25,12 +25,14 @@
     --clr-error-foreground: #222222;
     --clr-error-hover: #fd3030;
     --clr-error-hover-foreground: #222222;
+
+    --contact-list-gap: 0.75rem;
 }
 
 body {
     background-color: var(--clr-background);
     color: var(--clr-foreground);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'PT Sans', Verdana, Geneva, Tahoma, sans-serif;
 
     > * {
         padding-inline: 2.4rem;
@@ -40,7 +42,7 @@ body {
 
     > header {
         padding-block: 1rem;
-        margin-block-end: 2.8rem;
+        margin-block-end: 2.4rem;
         border-bottom: 1px solid var(--clr-border);
     }
 }
@@ -50,11 +52,11 @@ a {
 }
 
 ul {
-    list-style: inside;
+    list-style: none;
 }
 
 li + li {
-    margin-top: 0.5rem;
+    margin-top: var(--contact-list-gap);
 }
 
 .button, button {
@@ -102,6 +104,26 @@ li + li {
     form:not(.wrapper-form) > & {
         margin-block-start: 1rem;
         grid-column: 1 / -1;
+    }
+}
+
+.contact {
+    color: var(--clr-foreground);
+
+    &:hover {
+        color: var(--clr-primary);
+    }
+
+    &::before {
+        content: ">";
+        margin-inline-start: -1.2ch;
+        transition: 200ms ease opacity;
+        opacity: 0;
+    }
+
+    &:hover::before,
+    &:focus::before {
+        opacity: 1;
     }
 }
 
