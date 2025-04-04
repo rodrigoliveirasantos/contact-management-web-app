@@ -5,36 +5,35 @@
 @endSection
 
 @section('body')
-<form method="POST" action="{{ route('login') }}">
-    @csrf
+<header>
+    <h1>Fazer login</h1>
+</header>
 
-    <div>
-        <label>
-            Email
+<main>
+    <form method="POST" action="{{ route('login') }}" class="center">
+        @csrf
+
+        <x-form.field label="Email" :error="$errors->first('email')" class="row">
             <input type="email" name="email" value="{{ old('email') }}"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            Senha
+        </x-form.field>
+
+        <x-form.field label="Senha" :error="$errors->first('password')" class="row">
             <input type="password" name="password" />
-        </label>
-    </div>
-    <div>
-        <label>
+        </x-form.field>
+
+        <x-form.field label="Lembrar de mim" class="row">
             <input type="checkbox" name="remember" value="1" />
-            Lembrar de mim
-        </label>
-    </div>
-    @if ($errors->any())
-        <div>
-            <strong>{{ $errors->first() }}</strong>
+        </x-form.field>
+
+        @if ($errors->any())
+            <x-error>{{ $errors->first() }}</x-error>
+        @endif
+
+        <div class="button-group">
+            <button>
+                Fazer login
+            </button>
         </div>
-    @endif
-    <div>
-        <button>
-            Fazer login
-        </button>
-    </div>
-</form>
+    </form>
+</main>
 @endsection

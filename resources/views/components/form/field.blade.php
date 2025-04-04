@@ -1,9 +1,9 @@
 @props([
-    'label',
+    'label' => '',
     'error' => ''
 ])
 
-<div class="form-field">
+<div {{ $attributes->merge([ 'class' => 'form-field' ]) }}>
     <label class="form-field-wrapper">
         @if ($label)
             <span class="form-field-label">{{ $label }}</span>
